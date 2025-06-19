@@ -8,6 +8,7 @@ import "./App.css";
 function App() {
   const [_activeBackgroundImage, setActiveBackgroundImage] = useState("");
   const [selectedSlideType, setSelectedSlideType] = useState("qaImages");
+  const [lazyLoading, setLazyLoading] = useState(true);
 
   const handleSlideChange = useCallback((imageUrl) => {
     setActiveBackgroundImage(imageUrl);
@@ -48,23 +49,47 @@ function App() {
             style={{ marginLeft: "10px", padding: "5px" }}
           >
             <option value="picsumImages">Picsum Images</option>
-            <option value="imageFiles">Local Image Files</option>
+            <option value="imageFiles">Project assets</option>
             <option value="qaImages">Fanbase QA Images</option>
           </select>
+
+          <div style={{ marginTop: "10px" }}>
+            <label>
+              <input
+                type="checkbox"
+                checked={lazyLoading}
+                onChange={(e) => setLazyLoading(e.target.checked)}
+                style={{ marginRight: "5px" }}
+              />
+              Lazy Loading
+            </label>
+          </div>
         </div>
 
         <div>
           <p>Black background</p>
-          <Carousel onSlideChange={handleSlideChange} slides={slides} />
+          <Carousel
+            onSlideChange={handleSlideChange}
+            slides={slides}
+            lazyLoading={lazyLoading}
+          />
         </div>
         <div>
           <p>Fixed carousel blur bg</p>
-          <Carousel2 onSlideChange={handleSlideChange} slides={slides} />
+          <Carousel2
+            onSlideChange={handleSlideChange}
+            slides={slides}
+            lazyLoading={lazyLoading}
+          />
         </div>
 
         <div>
           <p>Simple slide blur bg</p>
-          <Carousel3 onSlideChange={handleSlideChange} slides={slides} />
+          <Carousel3
+            onSlideChange={handleSlideChange}
+            slides={slides}
+            lazyLoading={lazyLoading}
+          />
         </div>
       </div>
     </>

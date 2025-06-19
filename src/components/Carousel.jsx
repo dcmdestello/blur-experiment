@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import "./Carousel.css"; // Keep or add Carousel.css for Embla specific styles
 
-const Carousel = ({ onSlideChange, slides }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel();
+const Carousel = ({ onSlideChange, slides, lazyLoading }) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
 
   useEffect(() => {
     if (emblaApi) {
@@ -38,9 +38,11 @@ const Carousel = ({ onSlideChange, slides }) => {
               style={{ background: `black` }}
             ></div>
             <img
+              loading="lazy"
               className="embla__slide__img"
               src={slide.src}
               alt={slide.title}
+              {...(lazyLoading && { loading: "lazy" })}
             />
           </div>
         ))}

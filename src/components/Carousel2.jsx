@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import "./Carousel2.css";
 
-const Carousel2 = ({ onSlideChange, slides }) => {
+const Carousel2 = ({ onSlideChange, slides, lazyLoading }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
   });
@@ -55,10 +55,10 @@ const Carousel2 = ({ onSlideChange, slides }) => {
           {slides.map((slide) => (
             <div className="embla2__slide" key={slide.title}>
               <img
-                loading="lazy"
                 className="embla2__slide__img"
                 src={slide.src}
                 alt={slide.title}
+                {...(lazyLoading && { loading: "lazy" })}
               />
             </div>
           ))}

@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import "./Carousel3.css";
 
-const Carousel3 = ({ onSlideChange, slides }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel();
+const Carousel3 = ({ onSlideChange, slides, lazyLoading }) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
 
   useEffect(() => {
     if (emblaApi) {
@@ -33,14 +33,17 @@ const Carousel3 = ({ onSlideChange, slides }) => {
       <div className="embla__container">
         {slides.map((slide) => (
           <div className="embla__slide" key={slide.title}>
-            <div
+            <img
               className="embla__slide__background-blur"
-              style={{ backgroundImage: `url(${slide.src})` }}
-            ></div>
+              src={slide.src}
+              alt=""
+              {...(lazyLoading && { loading: "lazy" })}
+            />
             <img
               className="embla__slide__img"
               src={slide.src}
               alt={slide.title}
+              {...(lazyLoading && { loading: "lazy" })}
             />
           </div>
         ))}
