@@ -40,7 +40,6 @@ function App() {
       )} */}
       <div className="app-container">
         <h1>Blur Experiment</h1>
-
         <div style={{ marginBottom: "20px" }}>
           <label htmlFor="slideType">Select Images Source: </label>
           <select
@@ -67,38 +66,40 @@ function App() {
           </div>
         </div>
 
-        <div>
-          <p>Black background</p>
-          <Carousel
-            onSlideChange={handleSlideChange}
-            slides={slides}
-            lazyLoading={lazyLoading}
-          />
-        </div>
-        <div>
-          <p>Fixed carousel blur bg</p>
-          <Carousel2
-            onSlideChange={handleSlideChange}
-            slides={slides}
-            lazyLoading={lazyLoading}
-          />
-        </div>
+        <div className="carousels-container">
+          <div>
+            <p>Black background</p>
+            <Carousel
+              onSlideChange={handleSlideChange}
+              slides={slides}
+              lazyLoading={lazyLoading}
+            />
+          </div>
+          <div>
+            <p>Fixed carousel blur bg</p>
+            <Carousel2
+              onSlideChange={handleSlideChange}
+              slides={slides}
+              lazyLoading={lazyLoading}
+            />
+          </div>
 
-        <div>
-          <p>Simple slide blur bg</p>
-          <Carousel3
-            onSlideChange={handleSlideChange}
-            slides={slides}
-            lazyLoading={lazyLoading}
-          />
-        </div>
-        <div>
+          <div>
+            <p>Simple slide blur bg</p>
+            <Carousel3
+              onSlideChange={handleSlideChange}
+              slides={slides}
+              lazyLoading={lazyLoading}
+            />
+          </div>
+          {/* <div>
           <p>slide blur bg with translate3d</p>
           <Carousel4
             onSlideChange={handleSlideChange}
             slides={slides}
             lazyLoading={lazyLoading}
           />
+        </div> */}
         </div>
       </div>
     </>
