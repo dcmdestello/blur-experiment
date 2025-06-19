@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import Carousel from "./components/Carousel";
 import Carousel2 from "./components/Carousel2";
 import Carousel3 from "./components/Carousel3";
+import Carousel4 from "./components/Carousel4";
 import { picsumImages, imageFiles, qaImages } from "./data";
 import "./App.css";
 
@@ -86,6 +87,14 @@ function App() {
         <div>
           <p>Simple slide blur bg</p>
           <Carousel3
+            onSlideChange={handleSlideChange}
+            slides={slides}
+            lazyLoading={lazyLoading}
+          />
+        </div>
+        <div>
+          <p>slide blur bg with translate3d</p>
+          <Carousel4
             onSlideChange={handleSlideChange}
             slides={slides}
             lazyLoading={lazyLoading}
