@@ -12,32 +12,30 @@ function App() {
     setActiveBackgroundImage(imageUrl);
   }, []);
 
-  console.log("VVV activeBackgroundImage", activeBackgroundImage);
-
   // const slides = picsumImages;
   const slides = qaImages;
 
   return (
     <>
-      {activeBackgroundImage && (
+      {/* {activeBackgroundImage && (
         <div
           className="blurred-background"
           style={{ backgroundImage: `url(${activeBackgroundImage})` }}
         ></div>
-      )}
+      )} */}
       <div className="app-container">
         <h1>Blur Experiment</h1>
         <div>
-          <p>Carousel 1</p>
+          <p>Black background</p>
           <Carousel onSlideChange={handleSlideChange} slides={slides} />
         </div>
         <div>
-          <p>Carousel 2</p>
+          <p>Fixed carousel blur bg</p>
           <Carousel2 onSlideChange={handleSlideChange} slides={slides} />
         </div>
 
         <div>
-          <p>Carousel 3</p>
+          <p>Simple slide blur bg</p>
           <Carousel3 onSlideChange={handleSlideChange} slides={slides} />
         </div>
       </div>

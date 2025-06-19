@@ -1,4 +1,4 @@
-.carousel {
+/* .carousel {
   position: relative;
 }
 
@@ -82,4 +82,52 @@
   margin: 0;
   font-size: 1.2em;
   color: white;
+} */
+
+.embla2 {
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  margin: auto;
+  border: 1px solid #eee;
+  position: relative;
+}
+
+.embla2__container {
+  display: flex;
+  height: 100%;
+}
+
+.carousel2-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px);
+  transform: scale(1.1);
+  /* z-index: 0; */
+  transition: background-image 0.3s ease-in-out;
+  z-index: -4;
+}
+
+.embla2__slide {
+  position: relative;
+  flex: 0 0 100%;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.embla2__slide__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }

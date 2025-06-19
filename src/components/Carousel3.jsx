@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import "./Carousel.css"; // Keep or add Carousel.css for Embla specific styles
+import "./Carousel3.css";
 
 const Carousel3 = ({ onSlideChange, slides }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel();
@@ -35,7 +35,7 @@ const Carousel3 = ({ onSlideChange, slides }) => {
           <div className="embla__slide" key={slide.title}>
             <div
               className="embla__slide__background-blur"
-              style={{ src: `url(${slide.src})` }}
+              style={{ backgroundImage: `url(${slide.src})` }}
             ></div>
             <img
               className="embla__slide__img"

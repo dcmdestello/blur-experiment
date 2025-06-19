@@ -1,16 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import "./Carousel.css"; // Keep or add Carousel.css for Embla specific styles
+import "./Carousel2.css";
 
 const Carousel2 = ({ onSlideChange, slides }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel();
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: false,
+  });
+  const [activeSlideImage, setActiveSlideImage] = useState(
+    slides[0]?.src || ""
+  );
 
   useEffect(() => {
     if (emblaApi) {
       const handleSelect = () => {
         if (!emblaApi.slidesInView().length) return;
         const selectedSlideIndex = emblaApi.selectedScrollSnap();
-        onSlideChange(slides[selectedSlideIndex].src);
+        if (selectedSlideIndex < 0 || selectedSlideIndex >= slides.length)
+          return;
+
+        console.log(
+          "VVV slides[selectedSlideIndex]",
+          selectedSlideIndex,
+          slides,
+          slides[selectedSlideIndex]
+        );
+
+        const activeImage = slides[selectedSlideIndex].src;
+        setActiveSlideImage(activeImage);
+        onSlideChange(activeImage);
       };
 
       // Initial call to set the background for the first slide
@@ -28,25 +45,30 @@ const Carousel2 = ({ onSlideChange, slides }) => {
     }
   }, [emblaApi, onSlideChange, slides]);
 
+  console.log("VVV activeSlideImage", activeSlideImage);
+
   return (
-    <div className="embla" ref={emblaRef}>
-      <div className="embla__container">
-        {slides.map((slide) => (
-          <div className="embla__slide" key={slide.title}>
-            <div
-              className="embla__slide__background-blur"
-              style={{ src: `url(${slide.src})` }}
-            ></div>
-            <img
-              loading="lazy"
-              className="embla__slide__img"
-              src={slide.src}
-              alt={slide.title}
-            />
-          </div>
-        ))}
+    <>
+      {/* Carousel-level blurred background */}
+      <div className="embla2" ref={emblaRef}>
+        <div className="embla2__container">
+          {slides.map((slide) => (
+            <div className="embla2__slide" key={slide.title}>
+              <img
+                loading="lazy"
+                className="embla2__slide__img"
+                src={slide.src}
+                alt={slide.title}
+              />
+            </div>
+          ))}
+        </div>
+        <div
+          className="carousel2-background"
+          style={{ backgroundImage: `url(${activeSlideImage})` }}
+        ></div>
       </div>
-    </div>
+    </>
   );
 };
 
