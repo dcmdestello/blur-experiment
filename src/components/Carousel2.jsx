@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import "./Carousel.css"; // Keep or add Carousel.css for Embla specific styles
 
-const Carousel = ({ onSlideChange, slides }) => {
+const Carousel2 = ({ onSlideChange, slides }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel();
 
   useEffect(() => {
@@ -34,10 +34,11 @@ const Carousel = ({ onSlideChange, slides }) => {
         {slides.map((slide) => (
           <div className="embla__slide" key={slide.title}>
             <div
-              className="embla__slide__background"
-              style={{ background: `black` }}
+              className="embla__slide__background-blur"
+              style={{ src: `url(${slide.src})` }}
             ></div>
             <img
+              loading="lazy"
               className="embla__slide__img"
               src={slide.src}
               alt={slide.title}
@@ -49,4 +50,4 @@ const Carousel = ({ onSlideChange, slides }) => {
   );
 };
 
-export default Carousel;
+export default Carousel2;
