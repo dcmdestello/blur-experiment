@@ -38,7 +38,6 @@ const Carousel = ({ onSlideChange, slides, lazyLoading }) => {
               style={{ background: `black` }}
             ></div>
             <img
-              loading="lazy"
               className="embla__slide__img"
               src={slide.src}
               alt={slide.title}
