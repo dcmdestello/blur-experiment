@@ -6,14 +6,27 @@ import { picsumImages, imageFiles, qaImages } from "./data";
 import "./App.css";
 
 function App() {
-  const [activeBackgroundImage, setActiveBackgroundImage] = useState("");
+  const [_activeBackgroundImage, setActiveBackgroundImage] = useState("");
+  const [selectedSlideType, setSelectedSlideType] = useState("qaImages");
 
   const handleSlideChange = useCallback((imageUrl) => {
     setActiveBackgroundImage(imageUrl);
   }, []);
 
-  // const slides = picsumImages;
-  const slides = qaImages;
+  const getSlides = () => {
+    switch (selectedSlideType) {
+      case "picsumImages":
+        return picsumImages;
+      case "imageFiles":
+        return imageFiles;
+      case "qaImages":
+        return qaImages;
+      default:
+        return qaImages;
+    }
+  };
+
+  const slides = getSlides();
 
   return (
     <>
@@ -25,6 +38,21 @@ function App() {
       )} */}
       <div className="app-container">
         <h1>Blur Experiment</h1>
+
+        <div style={{ marginBottom: "20px" }}>
+          <label htmlFor="slideType">Select Images Source: </label>
+          <select
+            id="slideType"
+            value={selectedSlideType}
+            onChange={(e) => setSelectedSlideType(e.target.value)}
+            style={{ marginLeft: "10px", padding: "5px" }}
+          >
+            <option value="picsumImages">Picsum Images</option>
+            <option value="imageFiles">Local Image Files</option>
+            <option value="qaImages">Fanbase QA Images</option>
+          </select>
+        </div>
+
         <div>
           <p>Black background</p>
           <Carousel onSlideChange={handleSlideChange} slides={slides} />

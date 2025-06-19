@@ -50,7 +50,7 @@ const Carousel2 = ({ onSlideChange, slides }) => {
   return (
     <>
       {/* Carousel-level blurred background */}
-      <div className="embla2" ref={emblaRef}>
+      <div className="embla embla2" ref={emblaRef}>
         <div className="embla2__container">
           {slides.map((slide) => (
             <div className="embla2__slide" key={slide.title}>
